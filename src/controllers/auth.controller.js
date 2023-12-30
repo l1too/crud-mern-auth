@@ -66,3 +66,7 @@ export const logout = (req, res)=> {
         })
         res.sendStatus(200)
 }
+
+export const profile = (req, res)=> {
+    res.send('profile')
+}
