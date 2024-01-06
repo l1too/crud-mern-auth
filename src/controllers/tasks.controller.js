@@ -3,7 +3,7 @@ import Task from '../models/tasks.model.js'
 
 export const getTasks = async (req, res)=> {
     const tasks = await Task.find({
-        user: req.user.id
+        user: req.user.id 
     }).populate('user')
     res.json(tasks)
 }
