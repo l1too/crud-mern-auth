@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { useAuth } from "../context/AuthContext";
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 function RegisterPage() {
     const { register, handleSubmit, formState: {
@@ -28,6 +28,7 @@ function RegisterPage() {
                     </div>
                 ))
             }
+            <h1 className='font-bold text-2xl text-center'>Register</h1>
 
             <form onSubmit={onSubmit} className='flex flex-col text-black mt-3 p-6'>
                 <input type="text" placeholder='Username' className='bg-zinc-700 max-w-md rounded-md text-white p-2 m-2' {...register('username', {required: true})}/>
@@ -55,6 +56,9 @@ function RegisterPage() {
 
 
             </form>
+            <p className="flex justify-between p-10">Already have an account? <Link to={'/login'} className="text-sky-500">Login</Link></p>
+
+
         </div>
     )
 }
