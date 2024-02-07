@@ -53,11 +53,11 @@ function RegisterPage() {
                         )
                     }
 
-                    <button type='submit' className='bg-zinc-700 max-w-20 rounded-md text-white p-2 m-2' >Register</button>
+                    <button type='submit' className='bg-zinc-700 hover:bg-indigo-500 max-w-20 rounded-md text-white p-2 m-2' >Register</button>
 
 
                 </form>
-                <p className="flex justify-between p-10">Already have an account? <Link to={'/login'} className="text-sky-500">Login</Link></p>
+                <p className="flex justify-between p-10">Already have an account? <Link to={'/login'} className="text-sky-500 hover:text-sky-300 hover:underline">Login</Link></p>
 
 
                 </div>

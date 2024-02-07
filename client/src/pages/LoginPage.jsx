@@ -49,12 +49,12 @@ function LoginPage() {
          )
        }
 
-       <button type='submit' className='bg-zinc-700 max-w-20 rounded-md text-white p-2 m-2' >Login</button>
+       <button type='submit' className='bg-zinc-700 hover:bg-indigo-500 max-w-20 rounded-md text-white p-2 m-2' >Login</button>
 
 
      </form>
 
-       <p className="flex justify-between p-10">Don't have an account? <Link to={'/register'} className="text-sky-500">Sign up</Link></p>
+       <p className="flex justify-between p-10">Don't have an account? <Link to={'/register'} className="text-sky-500 hover:text-sky-300 hover:underline">Sign up</Link></p>
 
       </div>
 

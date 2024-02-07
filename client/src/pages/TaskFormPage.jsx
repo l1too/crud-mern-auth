@@ -2,6 +2,10 @@ import { useForm } from "react-hook-form"
 import { useTasks } from "../context/TaskContext";
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect } from "react";
+import dayjs from "dayjs";
+import  utc  from 'dayjs/plugin/utc'
+
+dayjs.extend(utc)
 
 function TaskFormPage() {
   const {register, handleSubmit, setValue} = useForm()
@@ -20,13 +24,19 @@ function TaskFormPage() {
       }
     }
     loadTask()
-  },[])
+  },[getTask, params.id, setValue])
 
   const onSubmit = handleSubmit((data)=> {
       if(params.id ){
-        updateTask(params.id, data)
+        updateTask(params.id, {
+          ...data,
+          date: dayjs.utc(data.date).format()
+        })
       } else {
-        createTask(data)
+        createTask({
+          ...data,
+          date: dayjs.utc(data.date).format()
+        })
       }
       navigate("/tasks")
   })
@@ -35,9 +45,16 @@ function TaskFormPage() {
     <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md m-auto">
 
       <form action="" onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="title">title</label>
         <input type="text" placeholder="Title" {...register("title")}  className="w-full bg-zinc-500 text-white px-4 py-2 rounded-md my-2" autoFocus/>
+
+        <label htmlFor="description">description</label>
         <textarea rows="3" placeholder="Description" {...register("description")} className="w-full bg-zinc-500 text-white px-4 py-2 rounded-md my-2"></textarea>
-        <button type="submit" className="w-16 bg-zinc-600 rounded-md">Save</button>
+
+        <label htmlFor="date">Date</label>
+        <input type="date" {...register("date")} className="w-full bg-zinc-500 text-white px-4 py-2 rounded-md my-2"/>
+
+        <button type="submit" className="w-16 bg-indigo-500 hover:bg-indigo-400 px-3 py-2 rounded-md">Save</button>
       </form>
     </div>
   )
